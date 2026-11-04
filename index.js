@@ -8,6 +8,7 @@ import "dotenv/config"
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const sql = mysql2.createPool({
     host: process.env.HOST_BANCO,
@@ -16,16 +17,16 @@ const sql = mysql2.createPool({
     database: process.env.NOME_BANCO
 })
 
-javascript
+
 app.get("/", (request, response) => {
     comandoSelect = "SELECT * FROM musicas_ArthurUlloa";
 
     sql.query(comandoSelect, (error, data) => {
         if (error) {
             console.log(error);
-            return;
+            return
         }
-
+        
         response.json(data);
     });
 });
