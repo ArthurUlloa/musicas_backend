@@ -31,12 +31,6 @@ app.get("/", (request, response) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log("Servidor online");
-});
-
-export default app
-
 app.post("/cadastrar", (request, response) => {
     const { titulo, artista, genero, ano, duracao } = request.body
 
@@ -51,3 +45,10 @@ app.post("/cadastrar", (request, response) => {
         response.status(201).json({ mensagem: "Música cadastrada com sucesso!" })
     })
 })
+
+app.listen(3000, () => {
+    console.log("Servidor online");
+});
+
+export default app
+
